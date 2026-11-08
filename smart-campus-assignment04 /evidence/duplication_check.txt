@@ -1,0 +1,45 @@
+# Duplicated-logic measurement (date: 2026-11-08 17:48 UTC)
+# command: sh evidence/duplication_check.sh
+# note: first run had a wrong regex for R2 (v2 showed 0); pattern corrected and rerun.
+
+=================== v1_initial ===================
+R1 start>=end rule: 2 place(s)
+    v1_initial/app.js:32:  if (s >= e) {
+    v1_initial/app.js:81:  if (s >= e) {                       // duplicated start<end rule
+R2 max-duration rule (>120): 2 place(s)
+    v1_initial/app.js:38:  if ((e - s) / 60000 > MAX_MINUTES) {
+    v1_initial/app.js:84:  } else if ((e - s) / 60000 > 120) { // duplicated max-duration rule
+R3 overlap formula: 2 place(s)
+    v1_initial/app.js:48:    if (s < be && e > bs) {
+    v1_initial/app.js:67:    if (s < be && e > bs) {          // duplicated overlap formula
+R4 date+time -> timestamp: 10 place(s)
+    v1_initial/app.js:20:  return Date.parse(date + 'T' + time + ':00Z');
+    v1_initial/app.js:35:  if (s < Date.parse(now + ':00Z')) {
+    v1_initial/app.js:46:    var bs = Date.parse(b.date + 'T' + b.start + ':00Z');
+    v1_initial/app.js:47:    var be = Date.parse(b.date + 'T' + b.end + ':00Z');
+    v1_initial/app.js:59:  var s = Date.parse(date + 'T' + start + ':00Z');
+    v1_initial/app.js:60:  var e = Date.parse(date + 'T' + end + ':00Z');
+    v1_initial/app.js:65:    var bs = Date.parse(b.date + 'T' + b.start + ':00Z');
+    v1_initial/app.js:66:    var be = Date.parse(b.date + 'T' + b.end + ':00Z');
+    v1_initial/app.js:79:  var s = Date.parse(date + 'T' + start + ':00Z');
+    v1_initial/app.js:80:  var e = Date.parse(date + 'T' + end + ':00Z');
+R5 result-box rendering: 5 place(s)
+    v1_initial/app.js:82:    box.className = 'hint';
+    v1_initial/app.js:85:    box.className = 'hint';
+    v1_initial/app.js:88:    box.className = '';
+    v1_initial/app.js:101:    box.className = 'ok';
+    v1_initial/app.js:104:    box.className = 'error';
+
+=================== v2_final ===================
+R1 start>=end rule: 1 place(s)
+    v2_final/src/domain/availability.js:24:  if (s >= e) return fail('END_BEFORE_START', 'End time must be after start time.');
+R2 max-duration rule (>120): 1 place(s)
+    v2_final/src/domain/availability.js:26:  if ((e - s) / MS_PER_MINUTE > MAX_MINUTES) return fail('TOO_LONG', `Maximum booking is ${MAX_MINUTES} minutes.`);
+R3 overlap formula: 1 place(s)
+    v2_final/src/domain/availability.js:13:export const overlaps = (aStart, aEnd, bStart, bEnd) => aStart < bEnd && aEnd > bStart;
+R4 date+time -> timestamp: 2 place(s)
+    v2_final/src/domain/availability.js:7:  return Date.parse(`${date}T${time}:00Z`);
+    v2_final/src/domain/availability.js:10:export const parseNow = (now) => Date.parse(`${now}:00Z`);
+R5 result-box rendering: 1 place(s)
+    v2_final/src/ui/render.js:30:  return `<div class="verdict ${cls}"><strong>${escapeHtml(result.label)}</strong><span>${escapeHtml(result.message)}</span></div>`;
+

@@ -1,0 +1,13 @@
+# Browser smoke test (Playwright + Chromium) of v2_final UI
+# date: 2026-11-08 17:48 UTC
+# commands: (cd v2_final && npm start) ; python3 evidence/ui_smoke.py   [run from project root]
+# note: optional manual check, NOT part of the 'npm test' count
+
+rooms initially: 5 of 5 rooms match
+empty state: No rooms match your requirements. Try fewer attendees or less equipment.
+15+projector: 3 of 5 rooms match
+R102 10:30-11:30 -> Unavailable | Overlaps an existing booking (10:00-11:30).
+after switch -> Pick a room and a time, then check availability.
+R103 -> Available | The room is free for the requested time.
+mobile 360px scrollWidth: 360
+JS errors: []

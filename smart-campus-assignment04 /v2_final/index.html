@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Campus - Find a room</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Find a room</h1>
+    <p>Fixed current time: <time id="now"></time> (prototype, fictional data)</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-labelledby="h-need">
+      <h2 id="h-need">1. What do you need?</h2>
+      <form id="filters" onsubmit="return false">
+        <label class="field">Attendees
+          <input id="attendees" type="number" min="1" value="1" inputmode="numeric">
+        </label>
+        <fieldset>
+          <legend>Required equipment (all selected items)</legend>
+          <div id="equipment" class="chips"></div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="h-room">
+      <h2 id="h-room">2. Choose a room</h2>
+      <p id="count" class="count" aria-live="polite"></p>
+      <div id="rooms" class="rooms"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="h-time">
+      <h2 id="h-time">3. Check a time</h2>
+      <div class="times">
+        <label class="field">Date <input id="date" type="date" value="2026-11-10"></label>
+        <label class="field">Start <input id="start" type="time" value="11:00"></label>
+        <label class="field">End <input id="end" type="time" value="12:00"></label>
+      </div>
+      <button id="check" type="button">Check availability</button>
+      <div id="result" role="status" aria-live="polite"></div>
+      <h3>Bookings in this room</h3>
+      <div id="bookings"></div>
+    </section>
+  </main>
+
+  <script type="module" src="src/ui/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Baseline test run (v1_initial)
+# date: 2026-11-08 17:48 UTC
+# node: v22.23.4
+# cwd: v1_initial
+# command: npm test   (= node --test --test-reporter=spec)
+
+
+> smart-campus-v1-initial@1.0.0 test
+> node --test --test-reporter=spec
+
+✔ AC1 rejects start equal to or after end (1.244092ms)
+✔ AC1 rejects a request in the past (0.255262ms)
+✔ AC2 accepts exactly 120 minutes (0.132919ms)
+✔ AC2 rejects 121 minutes (0.111732ms)
+✔ AC3 rejects a blocked room (0.174694ms)
+✔ AC4 rejects an overlapping request (0.109225ms)
+✔ AC4 allows requests that only touch booking endpoints (0.204678ms)
+✔ AC5 returns Available/Unavailable without mutating booking data (0.529192ms)
+✔ default fixture room is a real room object (sanity) (0.437936ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 82.529487
+
+# exit code: 0

@@ -1,0 +1,11 @@
+# Mutation sanity check (date: 2026-11-08 17:48 UTC, node v22.23.4)
+# command: sh evidence/run_mutation_check.sh
+
+MUTATION 'overlap uses <= (touching counts as conflict)': pass=33 fail=4  -> DETECTED by tests
+MUTATION 'max duration >= 120 instead of > 120': pass=36 fail=1  -> DETECTED by tests
+MUTATION 'F2 uses some() instead of every()': pass=30 fail=7  -> DETECTED by tests
+MUTATION 'selectRoom keeps stale result (F5 bug)': pass=35 fail=2  -> DETECTED by tests
+--- restored; final run:
+ℹ tests 37
+ℹ pass 37
+ℹ fail 0

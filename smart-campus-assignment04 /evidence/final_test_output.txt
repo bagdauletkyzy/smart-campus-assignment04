@@ -1,0 +1,57 @@
+# Final test run (v2_final)
+# date: 2026-11-08 17:48 UTC
+# node: v22.23.4
+# cwd: v2_final
+# command: npm test   (= node --test --test-reporter=spec)
+
+
+> smart-campus-v2-final@2.0.0 test
+> node --test --test-reporter=spec
+
+✔ catalog has at least 4 rooms with id, name, capacity, equipment, blocked, bookings (2.247926ms)
+✔ F1 boundary: capacity exactly equal to attendees is included (0.85039ms)
+✔ F1 boundary: capacity one below attendees is excluded (0.155113ms)
+✔ F1 on the real catalog: 21 attendees leaves only the 30- and 60-seat rooms (0.171685ms)
+✔ F2 requires ALL selected equipment (AND, not OR) (0.165083ms)
+✔ F1+F2 combined on the real catalog (0.111155ms)
+✔ filtering never mutates the catalog (frozen) and returns a new array (0.191889ms)
+✔ F3 a blocked room is never reported as available (0.454293ms)
+✔ AC1 rejects start equal to or after end (2.879655ms)
+✔ AC1 rejects a request in the past (0.328402ms)
+✔ AC1 request starting exactly at "now" is not in the past (0.284359ms)
+✔ AC1 rejects missing or malformed input (0.136285ms)
+✔ AC2 boundary: exactly 120 minutes is accepted (0.232028ms)
+✔ AC2 boundary: 121 minutes is rejected (0.109656ms)
+✔ AC3 rejects a blocked room even when the time is free (0.15883ms)
+✔ AC4 rejects an overlapping request (partial overlap) (0.127575ms)
+✔ AC4 rejects a request fully inside / fully covering a booking (0.455003ms)
+✔ AC4 boundary: touching at the end of a booking is allowed (0.383362ms)
+✔ AC4 boundary: touching at the start of a booking is allowed (0.16394ms)
+✔ AC4 a booking on another date does not conflict (0.091684ms)
+✔ AC5 returns Available / Unavailable labels (0.133793ms)
+✔ AC5 does not mutate booking data (frozen room + snapshot, unsorted input) (0.276901ms)
+✔ availability uses the CHOSEN room bookings (same slot, two rooms) (2.574679ms)
+✔ F5 switching the room clears the previous result (no stale answer) (0.2887ms)
+✔ F5 re-selecting the same room keeps its result (0.245076ms)
+✔ F4 no rooms match -> empty visible list (0.682449ms)
+✔ changing filters drops a selected room that no longer matches, and its result (0.334694ms)
+✔ a room hidden by the filters cannot be selected (0.124756ms)
+✔ checking without a selected room gives a clear message (0.103233ms)
+✔ full flow: filter -> select -> unsuccessful -> switch -> successful (0.286303ms)
+✔ service never mutates the frozen catalog (0.604412ms)
+✔ F4 UI shows a clear empty state when no rooms match (0.840085ms)
+✔ UI lists only matching rooms and marks blocked rooms (0.25413ms)
+✔ F5 UI result refreshes: verdict shown, then placeholder after switching rooms (0.765552ms)
+✔ UI available verdict uses the success style (0.268554ms)
+✔ UI highlights only the conflicting booking (shared overlap rule) (0.362071ms)
+✔ UI output is HTML-escaped (0.125905ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 289.318297
+
+# exit code: 0

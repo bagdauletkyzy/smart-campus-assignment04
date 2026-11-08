@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Campus - Room Availability (v1)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Room availability checker</h1>
+    <p>Room: <strong id="room-name"></strong> &middot; Fixed current time: 10 Nov 2026, 09:00</p>
+    <label>Date <input type="date" id="date" value="2026-11-10"></label>
+    <label>Start <input type="time" id="start" value="11:00"></label>
+    <label>End <input type="time" id="end" value="12:00"></label>
+    <button id="check" type="button">Check availability</button>
+    <div id="result" role="status" aria-live="polite"></div>
+    <h2>Existing bookings</h2>
+    <ul id="bookings"></ul>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
